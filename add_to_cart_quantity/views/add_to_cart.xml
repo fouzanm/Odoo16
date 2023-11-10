@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="add_to_cart_quantity_template" inherit_id="website_sale.products_item">
+        <xpath expr="//div[@class='o_wsale_product_btn']" position="inside">
+            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+            <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
+            <t t-if="show_quantity">
+                <div contenteditable="false" class="css_quantity input-group text-center">
+                    <a class="btn btn-primary js_add_cart_json" aria-label="Remove one" title="Remove one" href="#">
+                        <i class="fa fa-minus"></i>
+                    </a>
+                    <input type="text" class="js_quantity form-control quantity text-center" style="max-width: 4rem" data-min="1" name="add_qty" t-att-value="1"/>
+                    <a t-attf-href="#" class="btn btn-primary js_add_cart_json" aria-label="Add one" title="Add one">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>
