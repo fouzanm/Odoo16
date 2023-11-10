@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template id="viewed_carousel_template" xml:space="preserve">
+    <t t-name="most_viewed-and_sold_products.viewed_product_snippet_carousel">
+        <div id="viewed_product_carousel" class="container carousel slide viewed_products" data-bs-ride="carousel" t-att-data-bs-interval="4000">
+            <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                <t t-foreach="chunks" t-as="chunk">
+                    <div t-att-class="chunk.is_active ? 'carousel-item active' : 'carousel-item'">
+                        <div class="row">
+                            <t t-foreach="chunk" t-as="item">
+                                <div class="block span3 col-3">
+                                    <div class="card-group">
+                                        <div class="card">
+                                            <a t-attf-href="/shop/product/#{item.template_id}">
+                                                <img class="card-img-top" t-att-src="item.image ? ('data:image/png;base64,' + item.image) : 'https://www.pacificfoodmachinery.com.au/media/catalog/product/placeholder/default/no-product-image-400x400_1.png'" style="padding: 0px; margin: 0px; width:245.5px; height:245.5px;"/>
+                                                <h5 class="mt-2 mb-2"><t t-esc="item.name"/></h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </div>
+        <button class="carousel-view-prev carousel-control-prev" data-bs-target="#viewed_product_carousel" aria-label="Previous" title="Previous" style="width: 1rem; position: absolute;">
+            <span class="fa fa-chevron-circle-left fa-2x" style="color: black;"/>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-view-next carousel-control-next" data-bs-target="#viewed_product_carousel" aria-label="Next" title="Next" style="width: 1rem; position: absolute;">
+            <span class="fa fa-chevron-circle-right fa-2x" style="color: black;"/>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </t>
+</template>
