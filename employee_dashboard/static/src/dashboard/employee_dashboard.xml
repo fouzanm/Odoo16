@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <div t-name="employee_dashboard.EmployeeDashboard" owl="1" class="">
+        <div class="oh_dashboards employee_dashboard" style="margin-top: 20px;">
+            <div class="container-fluid my-5 o_hr_dashboard">
+                <aside class="employee_details col-sm-4 mb-3" style="float: left" id="employee_details">
+                    <div class="col-sm-12 mb-4">
+                        <div class="col-sm-12 mb-3 mr-3">
+                            <div class="col-md-12 oh-data">
+                                <div class="card" style="max-width: 540px;">
+                                    <div class="row g-0">
+                                        <div class="col-lg-12 my-3">
+                                            <h3 class="stat-head text-center text-primary">Profile</h3>
+                                        </div>
+                                        <div class="col-md-4 mx-3 mb-3">
+                                            <img class="card-img-top py-3 px-2" t-att-src="('data:image/png;base64,' + employee_data.details.image)"/>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="card-body my-2 mx-2">
+                                                <h2 class="card-title text-muted" t-esc="employee_data.details.name"/>
+                                                <h4 class="card-text text-black-50" t-esc="employee_data.details.job"/>
+                                                <br/>
+                                                <h6 class="card-text text-muted">Department: <t t-esc="employee_data.details.department"/></h6>
+                                                <h6 class="card-text text-muted">Email: <t t-esc="employee_data.details.email"/></h6>
+                                                <h6 class="card-text text-muted">Phone: <t t-esc="employee_data.details.mobile"/></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <t t-if="employee_data.details.employees.length != 0">
+                                    <div class="card mb-3 my-3" style="max-width: 540px;">
+                                        <div class="row g-0">
+                                            <div class="col-lg-12 my-3">
+                                                <h3 class="stat-head text-center text-primary">Employees</h3>
+                                            </div>
+                                            <div class="col-lg-12 mb-3 mx-5">
+                                                <ul id="tree">
+                                                    <li><h2 class="text-dark" t-esc="employee_data.details.name"/>
+                                                        <ul>
+                                                            <t t-foreach="employee_data.details.employees" t-as="employee" t-key="employee">
+                                                                <li><h4 class="text-muted" t-esc="employee"/></li>
+                                                            </t>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <section class="dashboard_main col-sm-8 mb-3" style="float:right" id="main_section">
+                    <div class="col-sm-12 mb-4">
+                        <div class="col-sm-12 mb-3">
+                            <div class="row">
+                                <div class="col-md-6 oh-data">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="stat-content">
+                                                <h3 class="stat-head text-center text-primary">Payslip</h3>
+                                                <EmployeeChart type="'bar'" chart="'payslip'" xdata="employee_data.payslip_xdata" ydata="employee_data.payslip_ydata" label="'#amount'"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 oh-data">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="stat-content">
+                                                <div class="row">
+                                                    <div class="col-lg-3"/>
+                                                    <div class="col-lg-6">
+                                                        <h3 class="chart-head text-center text-primary" id="chartHeading">Attendance</h3>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <select class="form-control text-center" t-on-change="handleChartSelect">
+                                                            <option value="attendance">Attendance</option>
+                                                            <option value="leave">Leave</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <EmployeeChart type="'bar'" chart="'attendance'" xdata="employee_data.attendance_xdata" ydata="employee_data.attendance_ydata" label="'#workhours'"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 my-5 oh-data">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="stat-content">
+                                                <h3 class="stat-head text-center text-primary">Projects</h3>
+                                                <EmployeeChart type="'pie'" chart="'project'" xdata="employee_data.project_xdata" ydata="employee_data.project_ydata"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 my-5 oh-data">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="stat-content">
+                                                <h3 class="stat-head text-center text-primary">Tasks</h3>
+                                                <EmployeeChart type="'doughnut'" chart="'task'" xdata="employee_data.task_xdata" ydata="employee_data.task_ydata"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</templates>
