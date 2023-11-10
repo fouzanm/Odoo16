@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="pos_res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.point.of.sale</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <div class="col-12 col-lg-6 o_setting_box" id="pos-loyalty" position="before">
+                <div class="col-12 col-lg-6 o_setting_box" id="pos_categ_discount_setting">
+                    <div class="o_setting_left_pane">
+                        <field name="pos_categ_discount"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="pos_categ_discount"/>
+                        <div class="text-muted">
+                            Set discount limit to category
+                        </div>
+                        <div class="content-group mt16" attrs="{'invisible': [('pos_categ_discount', '=', False)]}">
+                            <label for="pos_categ_ids" string="POS Category "/>
+                            <field name="pos_categ_ids" widget="many2many_tags" attrs="{'readonly': [('pos_has_active_session','=', True)]}"/>
+                        </div>
+                        <div class="content-group mt16" attrs="{'invisible': [('pos_categ_discount', '=', False)]}">
+                            <label for="discount_limit"/>
+                            <field name="discount_limit" attrs="{'readonly': [('pos_has_active_session','=', True)]}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+</odoo>
