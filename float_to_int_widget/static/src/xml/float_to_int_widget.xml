@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+   <t t-name="FloatToIntFieldTemplate" owl="1">
+       <input type="text" class="float_to_int_field oe_input" t-ref="inputfloat"
+              t-att-value="value" t-on-change="onFloatToInt"/>
+   </t>
+</templates>
