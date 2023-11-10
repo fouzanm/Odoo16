@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="employee_helpdesk_root_menu"
+              name="Employee Helpdesk"
+    />
+    <menuitem id="menu_helpdesk_tickets"
+              name="Tickets"
+              parent="employee_helpdesk_root_menu"
+    />
+<!--    menu for all tickets-->
+    <menuitem id="menu_all_tickets"
+              name="All Tickets"
+              parent="menu_helpdesk_tickets"
+              action="employee_all_ticket_view_action"
+    />
+<!--    menu for all assigned tickets-->
+     <menuitem id="menu_my_tickets"
+              name="Assigned Tickets"
+              parent="menu_helpdesk_tickets"
+              action="employee_my_ticket_view_action"
+    />
+</odoo>

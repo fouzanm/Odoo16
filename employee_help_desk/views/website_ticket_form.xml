@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="ticket_form" name="Ticket ">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty pt">
+                <section class="s_website_form pt40 pb40" data-vcss="001" data-snippet="s_website_form">
+                    <div class="container">
+                        <form action="/ticket/submit" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="" data-success-page="">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="s_website_form_rows row s_col_no_bgcolor">
+                                <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="name">
+                                            <span class="s_website_form_label_content">Ticket Name</span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="name" type="text" class="form-control s_website_form_input" name="name" required="1"  t-att-value="name"/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="employee">
+                                            <span class="s_website_form_label_content">Employee</span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <select name="employee" id="employee" class="form-control s_website_form_input advanced-select">
+                                                <option t-esc='employee.name' t-att-value="employee.id"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="manager_name">
+                                            <span class="s_website_form_label_content">Manager</span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <select id="manager" name="manager" type="text" class="form-control s_website_form_input advanced-select" required="1">
+                                                <option t-esc='manager.name' t-att-value="manager.id"/>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="issued_date">
+                                            <span class="s_website_form_label_content">Date Issued</span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="issued_date" type="date" class="form-control s_website_form_input" name="issued_date" required="1"  t-att-value="issued_date"/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="type">
+                                            <span class="s_website_form_label_content">Issue Type</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <select name="type" id="type" class="form-control s_website_form_input advanced-select" required="1">
+                                                <option value=""></option>
+                                                <t t-foreach="type" t-as="type">
+                                                    <option t-esc='type.name' t-att-value="type.id"/>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="issue">
+                                            <span class="s_website_form_label_content"> Describe</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="issue" type="text" class="form-control s_website_form_input" name="issued_date"/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="form-group col-12 s_website_form_submit" data-name="Submit Button">
+                                        <div style="width: 200px;" class="s_website_form_label"/>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_help_desk_all,access.employee.help.desk,model_employee_help_desk,base.group_user,1,1,1,1
+access_help_desk_issue_all,access.help.desk.issue,model_help_desk_issue,base.group_user,1,1,1,1

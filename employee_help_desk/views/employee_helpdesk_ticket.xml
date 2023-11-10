@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    tree view to view all tickets-->
+    <record id="employee_all_ticket_view_tree" model="ir.ui.view">
+        <field name="name">All Tickets List</field>
+        <field name="model">employee.help.desk</field>
+        <field name="arch" type="xml">
+            <tree string="Channel">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="manager_id"/>
+                <field name="issued_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <!--    form view to view all tickets-->
+    <record id="employee_all_ticket_view_form" model="ir.ui.view">
+        <field name="name">All Tickets Form</field>
+        <field name="model">employee.help.desk</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="manager_id"/>
+                            <field name="issue_id"/>
+                            <field name="issue"/>
+                        </group>
+                        <group>
+                            <field name="issued_date"/>
+                            <field name="company_id"/>
+                            <field name="email" widget="email"/>
+                            <field name="phone" widget="phone"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--    action to view all tickets-->
+    <record id="employee_all_ticket_view_action" model="ir.actions.act_window">
+        <field name="name">All Tickets</field>
+        <field name="res_model">employee.help.desk</field>
+        <field name="view_ids"  eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('employee_all_ticket_view_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('employee_all_ticket_view_form')})]"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--    tree view to view all assigned tickets-->
+    <record id="employee_my_ticket_view_tree" model="ir.ui.view">
+        <field name="name">My Tickets List</field>
+        <field name="model">employee.help.desk</field>
+        <field name="arch" type="xml">
+            <tree string="Channel" create="0">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="manager_id"/>
+                <field name="issued_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <!--    form view to view all assigned tickets-->
+    <record id="employee_my_ticket_view_form" model="ir.ui.view">
+        <field name="name">My Tickets Form</field>
+        <field name="model">employee.help.desk</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button name="action_ticket_confirm" type="object" string="Confirm" class="oe_highlight"
+                            attrs="{'invisible':[('state', '!=', 'new')]}"/>
+                    <button name="action_ticket_done" type="object" string="Approve" class="oe_highlight"
+                            attrs="{'invisible':[('state', '!=', 'on_going')]}"/>
+                    <button name="action_ticket_cancel" type="object" string="Reject"
+                            attrs="{'invisible':[('state', 'in', ('rejected','solved'))]}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="manager_id"/>
+                            <field name="issue_id"/>
+                            <field name="issue"/>
+                        </group>
+                        <group>
+                            <field name="issued_date"/>
+                            <field name="company_id"/>
+                            <field name="email" widget="email"/>
+                            <field name="phone" widget="phone"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--    action to view all assigned tickets-->
+    <record id="employee_my_ticket_view_action" model="ir.actions.act_window">
+        <field name="name">My Tickets</field>
+        <field name="res_model">employee.help.desk</field>
+        <field name="view_ids"  eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('employee_my_ticket_view_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('employee_my_ticket_view_form')})]"/>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('manager_id.user_id.id','=',uid)]</field>
+    </record>
+</odoo>
