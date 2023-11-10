@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="data_search_view_form" model="ir.ui.view">
+        <field name="name">Data Search Form</field>
+        <field name="model">data.search</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="content"/>
+                            <field name="models_id" widget="many2many_tags"/>
+                            <field name="fields_id" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <button name="action_data_search" type="object" class="btn btn-primary">
+                                <i class="fa fa-search"/></button>
+                        </group>
+                        <field name="record_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="data_search_view_action" model="ir.actions.act_window">
+        <field name="name">Data Search</field>
+        <field name="res_model">data.search</field>
+        <field name="view_mode">form</field>
+    </record>
+
+</odoo>
