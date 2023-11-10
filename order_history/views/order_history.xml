@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="order_history_view_tree" model="ir.ui.view">
+        <field name="name">Order History List</field>
+        <field name="model">order.history</field>
+        <field name="arch" type="xml">
+            <tree string="Channel">
+                <field name="sale_id"/>
+                <field name="partner_id"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+    <record id="order_history_view_form" model="ir.ui.view">
+        <field name="name">Order History Form</field>
+        <field name="model">order.history</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="sale_id"/>
+                            <field name="partner_id"/>
+                            <field name="date"/>
+                            <field name="salesperson_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Purchase Order">
+                            <field name="purchase_ids">
+                                <tree string="Purchase History">
+                                    <field name="name" string="Name"/>
+                                    <field name="partner_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="order_history_view_action" model="ir.actions.act_window">
+        <field name="name">Order History</field>
+        <field name="res_model">order.history</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_order_history"
+              name="Order History"
+              action="order_history_view_action"
+              parent="sale.sale_order_menu"
+              sequence="100"
+              groups="sales_team.group_sale_manager"
+    />
+</odoo>
