@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <!--to inherit quality rating in POS Receipt-->
+    <t t-name="OrderLinesReceipt" t-inherit="point_of_sale.OrderLinesReceipt" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-esc='line.product_name_wrapped[0]']" position="after">
+            <t t-if="line.quality_rating">
+                <div class="receipt-combo">
+                   <span> (Quality : <t t-esc="line.quality_rating"/>)</span>
+               </div>
+            </t>
+        </xpath>
+    </t>
+</templates>
