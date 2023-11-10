@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<templates id="clear_template" xml:space="preserve">
-    <t t-name="ClearAllButton" owl="1">
-        <div class="control-button" style="color:red">
-            <span>Clear All</span>
-        </div>
-    </t>
-</templates>
