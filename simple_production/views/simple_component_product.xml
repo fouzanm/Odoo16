@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Tree view for Component Products-->
+    <record id="simple_component_product_view_tree" model="ir.ui.view">
+        <field name="name">Component Product List</field>
+        <field name="model">simple.component.product</field>
+        <field name="arch" type="xml">
+            <tree string="Channel" editable="bottom">
+                <field name="product_id"/>
+                <field name="source_location_id"/>
+                <field name="quantity"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
