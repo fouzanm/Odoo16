@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="survey_fill_header" inherit_id="survey.survey_fill_header">
+        <xpath expr="//div[hasclass('o_survey_timer')]" position="after">
+            <div class="quiz_idle_timer" t-att-data-countdown-time="survey.countdown_time" t-att-data-idle-time="survey.inactivity_duration">
+                <h1 class="idle_timer" id="idle_timer"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>

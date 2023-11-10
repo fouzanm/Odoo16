@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--To add field in form view of Survey-->
+    <record id="survey_survey_view_form" model="ir.ui.view">
+        <field name="name">survey.survey.view.form.inherited</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_survey_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='scoring_type']" position="before">
+                <label for="inactivity_duration"  class="oe_inline"/>
+                <div>
+                    <field name="inactivity_duration" class="oe_inline"/>
+                    <label for="inactivity_duration" string="seconds" class="oe_inline"/>
+                </div>
+                <label for="countdown_time"  class="oe_inline"/>
+                <div>
+                    <field name="countdown_time" class="oe_inline"/>
+                    <label for="countdown_time" string="seconds" class="oe_inline"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
