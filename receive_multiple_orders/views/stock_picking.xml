@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_picking_view_form" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherited</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="purchase_order_ids" widget="many2many_tags" attrs="{'invisible':[('is_incoming','!=',True)]}"/>
+                <field name="is_incoming" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
