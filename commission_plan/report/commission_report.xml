@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="commission_report_view_action" model="ir.actions.report">
+        <field name="name">Commission Report</field>
+        <field name="model">commission.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">commission_plan.report_commission</field>
+        <field name="report_file">commission_plan.report_commission</field>
+        <field name="binding_model_id" ref="model_commission_report_wizard"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

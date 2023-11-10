@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Tree view for Product wise-->
+    <record id="commission_productwise_view_tree" model="ir.ui.view">
+        <field name="name">Product Wise List</field>
+        <field name="model">commission.productwise</field>
+        <field name="arch" type="xml">
+            <tree string="Channel" editable="bottom">
+                <field name="product_category_id"/>
+                <field name="product_id"/>
+                <field name="rate"/>
+                <field name="max_amount"/>
+            </tree>
+        </field>
+    </record>
+    <!--Form view for Product wise-->
+    <record id="commission_productwise_view_form" model="ir.ui.view">
+        <field name="name">Product Wise Form</field>
+        <field name="model">commission.productwise</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="product_category_id"/>
+                            <field name="product_id"/>
+                            <field name="rate"/>
+                            <field name="max_amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

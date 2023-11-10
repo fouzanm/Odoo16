@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="commission_report_wizard_view_form" model="ir.ui.view">
+        <field name="name">Commission Report Wizard Form</field>
+        <field name="model">commission.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+                    <group>
+                        <field name="report_type" widget="radio"/>
+                        <field name="sale_person_id" attrs="{'invisible':[('report_type', '!=', 'sale_person')], 'required':[('report_type', '=', 'sale_person')]}"/>
+                        <field name="sale_team_id" attrs="{'invisible':[('report_type', '!=', 'sale_team')], 'required':[('report_type', '=', 'sale_team')]}"/>
+                    </group>
+                    <footer>
+                        <button name="print_pdf" string="Print PDF" type="object" class="oe_highlight"/>
+                        <button name="print_xlsx" string="Print XLSX" type="object" class="oe_highlight"/>
+                        <button string="Discard" special="cancel" type="object"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="commission_report_wizard_view_action" model="ir.actions.act_window">
+        <field name="name">Commission Report</field>
+        <field name="res_model">commission.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

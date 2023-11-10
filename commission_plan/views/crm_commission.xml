@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Tree view for Commission-->
+    <record id="crm_commission_view_tree" model="ir.ui.view">
+        <field name="name">Commission List</field>
+        <field name="model">crm.commission</field>
+        <field name="arch" type="xml">
+            <tree string="Channel">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <!--Form view for Commission-->
+    <record id="crm_commission_view_form" model="ir.ui.view">
+        <field name="name">Commission Plan Form</field>
+        <field name="model">crm.commission</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="start_date"/>
+                            <field name="type"/>
+                        </group>
+                        <group>
+                            <field name="active"/>
+                            <field name="end_date"/>
+                            <field name="revenue_type" attrs="{'invisible': [('type', '!=', 'revenue_wise')],'required': [('type', '=', 'revenue_wise')]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Product wise" attrs="{'invisible': [('type', '!=', 'product_wise')]}">
+                            <field name="productwise_ids"/>
+                        </page>
+                        <page string="Revenue wise" attrs="{'invisible': [('type', '!=', 'revenue_wise')]}">
+                            <field name="revenuewise_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--Search view for Commission-->
+    <record id="crm_commission_view_search" model="ir.ui.view">
+        <field name="name">Commission Plan Search</field>
+        <field name="model">crm.commission</field>
+        <field name="arch" type="xml">
+            <search string="Search Commission">
+                <field name="name"/>
+                <field name="type"/>
+            </search>
+        </field>
+    </record>
+    <!--Action view for Commission-->
+    <record id="crm_commission_view_action" model="ir.actions.act_window">
+        <field name="name">Commission</field>
+        <field name="res_model">crm.commission</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Tree view for Revenue wise-->
+    <record id="commission_revenuewise_view_tree" model="ir.ui.view">
+        <field name="name">Revenue Wise List</field>
+        <field name="model">commission.revenuewise</field>
+        <field name="arch" type="xml">
+            <tree string="Channel" editable="bottom">
+                <field name="sequence"/>
+                <field name="from_amount"/>
+                <field name="to_amount"/>
+                <field name="rate"/>
+            </tree>
+        </field>
+    </record>
+    <!--Form view for Revenue wise-->
+    <record id="commission_revenuewise_view_form" model="ir.ui.view">
+        <field name="name">Revenue Wise Form</field>
+        <field name="model">commission.revenuewise</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="from_amount"/>
+                            <field name="to_amount"/>
+                            <field name="rate"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
