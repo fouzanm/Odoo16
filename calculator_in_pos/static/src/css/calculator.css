@@ -1,0 +1,27 @@
+.calculator-input {
+    text-align: right !important;
+}
+.key {
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: x-large !important;
+    color: #4A4F59 !important;
+}
+.operator {
+    width: 55px;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+}
+.number {
+    width: 55px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+}
+.equal {
+    width: 135px;
+    height: 55px;
+    border-radius: 10px;
+    background-color:#4A4F59 !important;
+    color: white !important;
+}

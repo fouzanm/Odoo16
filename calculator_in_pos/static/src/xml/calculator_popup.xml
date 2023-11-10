@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="calculator_template" xml:space="preserve">
+    <t t-name="CalculatorPopupTemplate" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup popup-calculator">
+                <p class="title calculator-title">
+                    <t t-esc="props.title"/>
+                </p>
+                <div class="body">
+                    <div class="calculator-screen">
+                        <input class="calculator-input" style="width: 300px; height: 60px;" type="text" readonly="1" t-ref="calculator-input" value="0"/>
+                    </div>
+                    <div class="calculator-keys" t-on-click="ButtonPress">
+                        <div class="row">
+                            <button type="button" class="key number" value="1">1</button>
+                            <button type="button" class="key number" value="2">2</button>
+                            <button type="button" class="key number" value="3">3</button>
+                            <button type="button" class="key operator" value="ac">AC</button>
+                        </div>
+                        <div class="row">
+                            <button type="button" class="key number" value="4">4</button>
+                            <button type="button" class="key number" value="5">5</button>
+                            <button type="button" class="key number" value="6">6</button>
+                            <button type="button" class="key operator" value="+">+</button>
+                        </div>
+                        <div class="row">
+                            <button type="button" class="key number" value="7">7</button>
+                            <button type="button" class="key number" value="8">8</button>
+                            <button type="button" class="key number" value="9">9</button>
+                            <button type="button" class="key operator" value="-">-</button>
+                        </div>
+                        <div class="row">
+                            <button type="button" class="key operator" value=".">.</button>
+                            <button type="button" class="key number" value="0">0</button>
+                            <button type="button" class="key operator" value="*">x</button>
+                            <button type="button" class="key operator" value="clear"><img src="/point_of_sale/static/src/img/backspace.png" width="24"
+                                 height="21" alt="Backspace"/></button>
+                        </div>
+                        <div class="row">
+                            <button type="button" class="key operator" value="/">/</button>
+                            <button type="button" class="key operator" value="%">%</button>
+                            <button type="button" class="key equal" value="=">=</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="button" t-on-click="cancel">
+                        <t t-esc="props.cancelText" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

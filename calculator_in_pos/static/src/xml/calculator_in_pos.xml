@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="pos_calculator_template" xml:space="preserve">
+    <t t-name="PosCalculator" owl="1">
+        <div class="control-button">
+            <span><i class="fa fa-calculator"/>Calculator</span>
+        </div>
+    </t>
+</templates>
