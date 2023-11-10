@@ -1,0 +1,4 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_product_return_all,access.product.return,model_product_return,base.group_user,1,1,1,1
+access_return_order_line_all,access.return.order.line,model_return_order_line,base.group_user,1,1,1,1
+access_return_reason_all,access.return.reason,model_return_reason,base.group_user,1,1,1,1

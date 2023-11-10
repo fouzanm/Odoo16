@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--    template for product return in portal-->
+    <template id="portal_product_return" name="Return Orders" customize_show="True" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Return Orders</t>
+                <t t-set="url" t-value="'/my/return'"/>
+                <t t-set="placeholder_count" t-value="'return_count'"/>
+            </t>
+        </xpath>
+    </template>
+<!--    breadcrumb for product return orders-->
+    <template id="portal_my_home_menu_return_orders" name="Portal layout : Return order menu entries"
+          	inherit_id="portal.portal_breadcrumbs" priority="60">
+    	<xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+        	<li t-if="page_name == 'return_orders'" class="breadcrumb-item active">
+            	<span>Return Orders</span>
+        	</li>
+    	</xpath>
+	</template>
+<!--    view for return orders in portal-->
+    <template id="portal_my_return_orders" name="Return Orders">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Return Orders</t>
+            </t>
+            <t t-if="not return_orders">
+                <p>There are currently no Return orders for your account.</p>
+            </t>
+            <t t-if="return_orders" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th class="text-center">Return Order</th>
+                        <th class="text-center">Sale Order</th>
+                        <th class="text-center">Customer</th>
+                        <th class="text-center">Create Date</th>
+                        <th class="text-center">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="return_orders" t-as="order">
+                        <tr>
+                            <td class="text-center">
+                                <t t-esc="order['name']"/>
+                            </td>
+                            <td class="text-center">
+                                <t t-esc="order['order']"/>
+                            </td>
+                            <td class="text-center">
+                                <t t-esc="order['customer']"/>
+                            </td>
+                            <td class="text-center">
+                                <t t-esc="order['date']"/>
+                            </td>
+                            <td class="tx_status text-center">
+                                <t t-if="order['status'] == 'draft'">
+                                    <span class="badge rounded-pill text-bg-light"><i class="fa fa-fw fa-clock-o" aria-label="Draft" title="Draft" role="img"></i><span class="d-none d-md-inline"> Draft</span></span>
+                                </t>
+                                <t t-if="order['status'] == 'confirm'">
+                                    <span class="badge rounded-pill text-bg-info"><i class="fa fa-fw fa-check" aria-label="Confirm" title="Confirm" role="img"></i><span class="d-none d-md-inline"> Confirm</span></span>
+                                </t>
+                                <t t-if="order['status'] == 'done'">
+                                    <span class="badge rounded-pill text-bg-success"><i class="fa fa-fw fa-check" aria-label="Done" title="Done" role="img"></i><span class="d-none d-md-inline"> Done</span></span>
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </t>
+        </t>
+    </template>
+<!--    inherit button in sale order portal to create return order-->
+    <template id="sale_order_portal_content_inherit_return_order"
+        name="Return Order"
+        inherit_id="sale.sale_order_portal_content">
+        <xpath expr="//div[@id='introduction']//h2" position="inside">
+            <t t-if="return_order == false">
+                <a class="btn btn-primary my-0" style="float: right;" t-attf-href="/order/return/{{slug(sale_order)}}">Return</a>
+            </t>
+        </xpath>
+    </template>
+</odoo>

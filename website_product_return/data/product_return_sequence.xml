@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+       <record id="seq_product_return" model="ir.sequence">
+           <field name="name">Return Product Number</field>
+           <field name="code">product.return.sequence</field>
+           <field name="prefix">RE</field>
+           <field name="padding">4</field>
+       </record>
+    </data>
+</odoo>
