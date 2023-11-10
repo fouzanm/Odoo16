@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_view_form" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherited</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <header>
+                <button name="check_best_price" string="Check Price" type="object"/>
+            </header>
+            <notebook position="inside">
+                <page string="Supplier Info">
+                    <field name="supplier_ids">
+                        <tree string="Supplier Info">
+                            <field name="partner_id" string="Supplier"/>
+                            <field name="product_id"/>
+                            <field name="quantity"/>
+                            <field name="price_unit"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

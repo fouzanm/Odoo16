@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="best_price_wizard_view_form" model="ir.ui.view">
+        <field name="name">Best Price Wizard Form</field>
+        <field name="model">best.price.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+                    <field name="supplier_ids">
+                        <tree string="Supplier Info">
+                            <field name="partner_id" string="Supplier"/>
+                            <field name="product_id"/>
+                            <field name="quantity"/>
+                            <field name="price_unit"/>
+                            <button name="action_create_order" string="Create Order" type="object"
+                                    attrs="{'invisible':[('best_price','!=',True)]}"/>
+                            <field name="best_price" invisible="1"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="best_price_wizard_view_action" model="ir.actions.act_window">
+        <field name="name">Best Price</field>
+        <field name="res_model">best.price.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
