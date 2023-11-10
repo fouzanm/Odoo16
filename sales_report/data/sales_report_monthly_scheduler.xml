@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+<!--        Scheduled action for monthly sales report-->
+        <record id="ir_cron_scheduler_recurring_action_monthly" model="ir.cron">
+            <field name="name">Monthly Sales Report</field>
+            <field name="model_id" ref="model_sales_report"/>
+            <field name="state">code</field>
+            <field name="code">model.action_monthly_send_report()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">months</field>
+            <field name="numbercall">-1</field>
+        </record>
+    </data>
+</odoo>

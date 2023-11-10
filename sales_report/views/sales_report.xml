@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+     <record id="sales_report_view_tree" model="ir.ui.view">
+        <field name="name">Sales Report List</field>
+        <field name="model">sales.report</field>
+        <field name="arch" type="xml">
+            <tree string="Channel">
+                <field name="name"/>
+                <field name="team_id"/>
+                <field name="period"/>
+            </tree>
+        </field>
+    </record>
+    <record id="sales_report_view_form" model="ir.ui.view">
+        <field name="name">Sales Report Form</field>
+        <field name="model">sales.report</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="customers_ids" widget="many2many_tags"/>
+                            <field name="team_id"/>
+                            <field name="period" widget="radio"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="sales_report_view_action" model="ir.actions.act_window">
+        <field name="name">Sales Report</field>
+        <field name="res_model">sales.report</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_sales_report"
+              name="Sales Report"
+              action="sales_report_view_action"
+              parent="sale.menu_sale_config"
+              sequence="100"
+    />
+</odoo>

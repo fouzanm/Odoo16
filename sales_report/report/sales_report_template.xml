@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_sales_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="text-center">
+                        <h3>Sales Report</h3>
+                    </div>
+                    <br/>
+                    <div class="text-left">
+                        <h6 style="font-weight: bold">From : <span t-esc="from_date"/></h6>
+                        <h6 style="font-weight: bold">To : <span t-esc="to_date"/></h6>
+                    </div>
+                    <br/>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th name="th_number">
+                                    <span>SI No</span>
+                                </th>
+                                <th name="th_order">
+                                    <span>Order</span>
+                                </th>
+                                <th name="th_customer">
+                                    <span>Customer</span>
+                                </th>
+                                <th name="th_team">
+                                    <span>Team</span>
+                                </th>
+                                <th name="th_price">
+                                    <span>Price</span>
+                                </th>
+                                <th name="th_state">
+                                    <span>State</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="i" t-value="1"/>
+                            <t t-foreach="report" t-as="line">
+                                <tr>
+                                    <td>
+                                        <t t-esc="i"/>
+                                        <t t-set="i" t-value="i+1"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <t t-esc="line['name']"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <t t-esc="line['customer']"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <t t-esc="line['team']['en_US']"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <t t-esc="line['amount_total']"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <t t-esc="line['state']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

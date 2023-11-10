@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+       <record id="seq_sales_report_no" model="ir.sequence">
+           <field name="name">Sales Report number </field>
+           <field name="code">sales.report.number</field>
+           <field name="prefix">R</field>
+           <field name="padding">4</field>
+       </record>
+    </data>
+</odoo>
