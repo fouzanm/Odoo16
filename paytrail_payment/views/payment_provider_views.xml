@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="payment_provider_form" model="ir.ui.view">
+        <field name="name">Paytrail Provider Form</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+            <group name="provider_credentials" position='inside'>
+                <group attrs="{'invisible': [('code', '!=', 'paytrail')]}">
+                    <field name="paytrail_merchant_identifier"
+                           string="Merchant Identifier"
+                           attrs="{'required': [('code', '=', 'paytrail'), ('state', '!=', 'disabled')]}"/>
+                    <field name="paytrail_secret_key"
+                           string="Secret Key" password="1"
+                           attrs="{'required': [('code', '=', 'paytrail'), ('state', '!=', 'disabled')]}"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+</odoo>
