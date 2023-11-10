@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <div t-name="daily_work_report.WorkReportDashboard" owl="1" class="">
+        <div class="oh_dashboards work_report_dashboard" style="margin-top: 20px;">
+            <div class="container-fluid my-5 o_hr_dashboard">
+                <section class="dashboard_main col-sm-12 mb-3" style="float:right" id="main_section">
+                    <div class="col-sm-12 mb-4">
+                        <div class="col-sm-12 mb-3">
+                            <div class="row">
+                                <div class="col-md-3"/>
+                                <div class="col-md-6 oh-data">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="stat-content">
+                                                <div class="row">
+                                                    <div class="my-2 col-lg-8">
+                                                        <h3 class="chart-head text-center text-primary" id="chartHeading">Work Report Dashboard</h3>
+                                                    </div>
+                                                    <div class="col-lg-2 my-auto">
+                                                        <select class="form-select" t-on-change="handleChartEmployee">
+                                                            <option value="">Select Employee</option>
+                                                            <t t-foreach="workReportData.data" t-as="line" t-key="line.id">
+                                                               <option t-att-value="line.id">
+                                                                   <t t-esc="line.name"/>
+                                                               </option>
+                                                           </t>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-lg-2 my-auto">
+                                                        <input id="report_date" type="date" class="form-control" name="report_date" t-att-value="date" t-on-change="handleReportDate"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card my-4">
+                                        <div class="card-body">
+                                            <div class="stat-content">
+                                                <WorkReportChart xdata="workReportData.xdata" ydata="workReportData.ydata"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</templates>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="daily_work_report_view_search" model="ir.ui.view">
+        <field name="name">Daily Work Report Search</field>
+        <field name="model">daily.work.report</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="date"/>
+                <filter string="Today" name="date" domain="[('date', '=', context_today())]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Date" name="date" context="{'group_by': 'date'}"/>
+                    <filter string="Employee" name="employee_id" context="{'group_by': 'employee_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="daily_work_report_view_tree" model="ir.ui.view">
+        <field name="name">Daily Work Report List</field>
+        <field name="model">daily.work.report</field>
+        <field name="arch" type="xml">
+            <tree string="Channel" create="0">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="email"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+    <record id="daily_work_report_view_form" model="ir.ui.view">
+        <field name="name">Daily Work Report Form</field>
+        <field name="model">daily.work.report</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="employee_id"/>
+                            <field name="email"/>
+                            <field name="date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Content">
+                            <field name="body"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="daily_work_report_view_action" model="ir.actions.act_window">
+        <field name="name">Daily Work Report</field>
+        <field name="res_model">daily.work.report</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="main_menu_daily_work_report"
+              name="Daily Work Report"
+    />
+    <menuitem id="work_report_dashboard"
+              name="Dashboard"
+              parent="main_menu_daily_work_report"
+              action="work_report_dashboard_action"
+              sequence="1"/>
+    <menuitem id="menu_daily_work_report"
+              name="Work Report"
+              parent="main_menu_daily_work_report"
+              action="daily_work_report_view_action"
+              sequence="5"/>
+    <menuitem id="menu_daily_work_report_wizard"
+              name="Report"
+              parent="main_menu_daily_work_report"
+              action="work_report_wizard_view_action"
+              sequence="10"/>
+</odoo>
