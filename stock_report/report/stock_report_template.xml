@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_stock_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="text-center">
+                        <h3>Stock Report</h3>
+                    </div>
+                    <br/>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th name="th_number">
+                                    <span>SI No</span>
+                                </th>
+                                <th name="th_product">
+                                    <span>Product</span>
+                                </th>
+                                <th name="th_price">
+                                    <span>Price</span>
+                                </th>
+                                <th name="th_quantity">
+                                    <span>Quantity</span>
+                                </th>
+                                <th name="th_location">
+                                    <span>Location</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="i" t-value="1"/>
+                            <t t-foreach="report" t-as="line">
+                                <tr>
+                                    <td>
+                                        <t t-esc="i"/>
+                                        <t t-set="i" t-value="i+1"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <t t-esc="line['name']['en_US']"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <t t-esc="line['list_price']"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <t t-esc="line['quantity']"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <t t-esc="line['complete_name']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

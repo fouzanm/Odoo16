@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.inventory</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="stock.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <div class="col-12 col-lg-6 o_setting_box" id="reception_report" position="after">
+                <div class="col-12 col-lg-6 o_setting_box" id="stock_report_type_setting">
+                    <div class="o_setting_left_pane">
+                        <field name="stock_report"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="stock_report_type"/>
+                        <div class="text-muted">
+                            User can choose Stock report type
+                        </div>
+                        <div class="content-group">
+                            <field name="stock_report_type" class="o_light_label"
+                                   attrs="{'invisible': [('stock_report', '=', False)], 'required': [('stock_report', '=', True)]}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+</odoo>
