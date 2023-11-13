@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    tree view for multiple reference-->
+    <record id="multiple_reference_view_tree" model="ir.ui.view">
+        <field name="name">Multiple Reference Tree</field>
+        <field name="model">multiple.reference</field>
+        <field name="arch" type="xml">
+            <tree string="Channel">
+                <field name="name"/>
+                <field name="product_id"/>
+            </tree>
+        </field>
+    </record>
+<!--    form view for multiple reference-->
+    <record id="multiple_reference_view_form" model="ir.ui.view">
+        <field name="name">Multiple Reference Form</field>
+        <field name="model">multiple.reference</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <label for="product_id"/>
+                            <div class="o_row">
+                                <field name="product_id"/>
+                                <button type="object" name="action_to_view_data" class="btn btn-secondary fa o_external_button fa-external-link"/>
+                            </div>
+                        </group>
+                    </group>
+                    <div style="margin-top: 10px;">
+                        <field name="is_default_code" invisible="1"/>
+                        <button name="action_to_set_default" type="object" class="btn btn-primary" string="Set as default" style="height: 30px !important; width: 120px !important; display: inline-block !important;"
+                                attrs="{'invisible':[('is_default_code', '=', True)]}" confirm="Are you sure you want to set this as the default code?"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+<!--    action for multiple reference-->
+    <record id="multiple_reference_view_action" model="ir.actions.act_window">
+        <field name="name">Multiple Reference</field>
+        <field name="res_model">multiple.reference</field>
+        <field name="view_mode">tree, form</field>
+    </record>
+</odoo>
