@@ -1,5 +1,4 @@
 /** @odoo-module **/
-"use strict";
 import ProductScreen from 'point_of_sale.ProductScreen';
 import Registries from 'point_of_sale.Registries';
 
@@ -8,25 +7,25 @@ const CategoryDiscountLimit = (ProductScreen) => class CategoryDiscountLimit ext
             super.setup();
         }
     async _onClickPay(){
-        var orderlines = this.env.pos.get_order().get_orderlines()
-        var selected_categ = this.env.pos.config.pos_categ_ids
-        var discount_limit = this.env.pos.config.discount_limit
-        var within_limit = true
+        var orderLines = this.env.pos.get_order().get_orderlines()
+        var selectedCateg = this.env.pos.config.pos_categ_ids
+        var discountLimit = this.env.pos.config.discount_limit
+        var withinLimit = true
         var categ = {}
-        for (let i = 0; i < selected_categ.length; i++) {
-            categ[selected_categ[i]] = 0;
+        for (let i = 0; i < selectedCateg.length; i++) {
+            categ[selectedCateg[i]] = 0;
         }
         if (this.env.pos.config.pos_categ_discount === true) {
-            for (let i=0; i<orderlines.length; i++) {
-                if (selected_categ.includes(orderlines[i].product.pos_categ_id[0])) {
-                    let price = orderlines[i].price * orderlines[i].quantity
-                    let discount_price = price * orderlines[i].discount / 100;
-                    categ[orderlines[i].product.pos_categ_id[0]] += parseFloat(discount_price.toFixed(2));
+            for (let i=0; i<orderLines.length; i++) {
+                if (selectedCateg.includes(orderLines[i].product.pos_categ_id[0])) {
+                    let price = orderLines[i].price * orderLines[i].quantity
+                    let discountPrice = price * orderLines[i].discount / 100;
+                    categ[orderLines[i].product.pos_categ_id[0]] += parseFloat(discountPrice.toFixed(2));
                 }
             }
             for (let i in categ){
-                if ( categ[i] > discount_limit) {
-                    within_limit = false
+                if ( categ[i] > discountLimit) {
+                    withinLimit = false
                     const { confirmed } = await this.showPopup('ErrorPopup', {
                     //Error pop when the discount exceeded than discount limit
                         title:this.env._t('Discount Limit Exceed'),
@@ -35,7 +34,7 @@ const CategoryDiscountLimit = (ProductScreen) => class CategoryDiscountLimit ext
                 }
             }
         }
-        if (within_limit === true){
+        if (withinLimit){
             super._onClickPay(...arguments);
         }
     }
