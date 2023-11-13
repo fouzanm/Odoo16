@@ -28,7 +28,7 @@ class ProductProduct(models.Model):
         reference = self.env['multiple.reference'].search([
             ('name', '=', self.default_code),
             ('product_id', '=', self.id)])
-        if not reference:
+        if not reference and self.default_code:
             self.env['multiple.reference'].create({
                 'name': self.default_code,
                 'product_id': self.id})
