@@ -1,8 +1,6 @@
 /** @odoo-module **/
-import { Gui } from 'point_of_sale.Gui';
 import AbstractAwaitablePopup from 'point_of_sale.AbstractAwaitablePopup';
 import Registries from 'point_of_sale.Registries';
-import { _t } from 'web.core';
 const { useRef } = owl;
 class CalculatorPopup extends AbstractAwaitablePopup {
     setup() {
