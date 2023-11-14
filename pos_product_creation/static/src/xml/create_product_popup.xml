@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+   <t t-name="CreateProductPopup" owl="1">
+       <div role="dialog" class="modal-dialog">
+           <div class="popup">
+               <h3 class="title">Create Product</h3>
+               <span class="body">
+                   <div id="product-image"></div>
+                   <div class="row" style="display: flex; margin-bottom: 10px;">
+                        <div style="width: 100px; display: flex; align-items: center; margin-left: 15px;">
+                            <label for="image" style="width: 100px;">Image</label>
+                        </div>
+                        <div style="width: 400px; float: right;">
+                            <input name="image" class="form-control form-control-sm image-uploader" t-on-change="uploadImage" id="image" type="file" style="width: 350px; height: 44px"/>
+                        </div>
+                   </div>
+                   <div class="row" style="display: flex; margin-bottom: 10px;">
+                        <div style="width: 100px; display: flex; align-items: center; margin-left: 15px;">
+                            <label for="name" type="text" style="width: 100px;">Name</label>
+                        </div>
+                        <div style="width: 400px; float: right;">
+                            <input name="name" id="product" class="form-control" type="text" style="width: 350px; height: 44px"/>
+                        </div>
+                   </div>
+                   <div class="row" style="display: flex; margin-bottom: 10px;">
+                        <div style="width: 100px; display: flex; align-items: center; margin-left: 15px;">
+                            <label for="price" type="number" style="width: 100px;">Price</label>
+                        </div>
+                        <div style="width: 400px; float: right;">
+                            <input name="price" id="price" class="form-control" type="number" style="width: 350px; height: 44px"/>
+                        </div>
+                   </div>
+                   <div class="row" style="display: flex; margin-bottom: 10px;">
+                        <div style="width: 100px; display: flex; align-items: center; margin-left: 15px;">
+                            <label for="cost" style="width: 100px;">Cost</label>
+                        </div>
+                        <div style="width: 400px; float: right;">
+                            <input name="cost" id="cost" class="form-control" style="width: 350px; height: 44px"/>
+                        </div>
+                   </div>
+                   <div class="row" style="display: flex; margin-bottom: 10px;">
+                        <div style="width: 100px; display: flex; align-items: center; margin-left: 15px;">
+                            <label for="category" style="width: 100px;">Category</label>
+                        </div>
+                        <div style="width: 400px; float: right;">
+                            <select name="category" id="category" style="width: 350px; height: 44px; border-radius: 3px;" class="form-control">
+                                <t t-foreach="props.category" t-as="field" t-key="field.id">
+                                    <option t-esc='field.name' t-att-value="field.id"/>
+                                </t>
+                            </select>
+                        </div>
+                   </div>
+               </span>
+               <div class="footer">
+                   <div class="button cancel" t-on-click="cancel">
+                       <t t-esc="props.cancelText"/>
+                   </div>
+                   <div class="button confirm" t-on-click="createProduct">
+                       <t t-esc="props.confirmText"/>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </t>
+</templates>
