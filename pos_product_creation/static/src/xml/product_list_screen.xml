@@ -16,7 +16,7 @@
                         <div class="search-bar-container sb-partner">
                             <div class="pos-search-bar">
                                 <i class="fa fa-search"/>
-                                <input t-ref="search-word-input-product" placeholder="Search Products..." size="1" t-on-keyup="updateProductList" />
+                                <input t-ref="search-word-input-product" placeholder="Search Products..." size="1" t-on-keyup="updateSuggestProduct" />
                                 <i class="fa fa-times" t-on-click="_clearSearch"/>
                             </div>
                         </div>
