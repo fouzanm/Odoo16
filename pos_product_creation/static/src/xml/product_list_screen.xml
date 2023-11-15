@@ -12,7 +12,17 @@
                     <div class="button back" t-on-click="back">
                         <t> Discard</t>
                     </div>
+                    <div class="top-right-buttons">
+                        <div class="search-bar-container sb-partner">
+                            <div class="pos-search-bar">
+                                <i class="fa fa-search"/>
+                                <input t-ref="search-word-input-product" placeholder="Search Products..." size="1" t-on-keyup="updateProductList" />
+                                <i class="fa fa-times" t-on-click="_clearSearch"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <section class="full-content">
                     <div class="partner-window">
                         <section class="subwindow list">
@@ -29,10 +39,10 @@
                                                 <th>Edit</th>
                                             </tr>
                                         </thead>
-                                        <tbody class="partner-list-contents">
+                                        <tbody class="partner-list-contents" id="product-table">
                                             <t t-foreach="this.props.products" t-as="product"
                                                t-key="product.id">
-                                                <tr>
+                                                <tr t-att-id="product.id">
                                                     <td><img t-att-src="product.image" style="width: 50px;"/></td>
                                                     <td><t t-esc="product.display_name"/></td>
                                                     <t t-if="product.default_code">
