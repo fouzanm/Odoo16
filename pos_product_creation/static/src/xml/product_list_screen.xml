@@ -10,7 +10,7 @@
                         <t> Create</t>
                     </div>
                     <div class="button back" t-on-click="back">
-                        <t> Discard</t>
+                        <t> Exit</t>
                     </div>
                     <div class="top-right-buttons">
                         <div class="search-bar-container sb-partner">

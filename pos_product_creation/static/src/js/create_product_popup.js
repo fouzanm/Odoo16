@@ -7,7 +7,13 @@ class CreateProductPopup extends AbstractAwaitablePopup {
         super.setup();
         this.imageURL = null;
     }
-    createProduct(ev) {
+    async createProduct(ev) {
+        if (!document.getElementById('product').value){
+            await this.showPopup('ErrorPopup', {
+                    title: this.env._t('Validation Error'),
+                    body: this.env._t('Product will not be created without a name.'),
+                });
+        }
         this.rpc({
             model: 'product.product',
             method: 'create',

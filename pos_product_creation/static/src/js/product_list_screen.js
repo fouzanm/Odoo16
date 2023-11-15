@@ -14,20 +14,16 @@ class ProductListScreen extends PosComponent {
         })
     }
     updateProductList(ev) {
-        console.log('1')
         var editedProduct = (this.props.products).filter((proxy) => proxy.id === parseInt(ev.productId));
         editedProduct[0].display_name = ev.data.name
         editedProduct[0].lst_price = ev.data.lst_price
-        console.log('2')
         if (ev.data.image_1920) {
             editedProduct[0].image = `data:image/jpeg;base64,${ev.data.image_1920}`
         }
-        console.log('3')
         if(ev.data.pos_categ_id) {
             var posCategory = Object.values(this.env.pos.db.category_by_id).filter((obj) => obj.id === ev.data.pos_categ_id);
             editedProduct[0].pos_categ_id = Object.values(posCategory[0])
         }
-        console.log('4')
 
     }
     createProduct() {
