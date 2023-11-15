@@ -7,17 +7,16 @@
     'description': 'POS Product Creation',
     'author': 'Fouzan M',
     'depends': ['base', 'point_of_sale'],
-    'data': [
-        # 'views/res_config_settings.xml',
-    ],
     'assets': {
        'point_of_sale.assets': [
            'pos_product_creation/static/src/js/pos_product.js',
            'pos_product_creation/static/src/js/product_list_screen.js',
            'pos_product_creation/static/src/js/create_product_popup.js',
+           'pos_product_creation/static/src/js/edit_product_popup.js',
            'pos_product_creation/static/src/xml/product_button.xml',
            'pos_product_creation/static/src/xml/product_list_screen.xml',
            'pos_product_creation/static/src/xml/create_product_popup.xml',
+           'pos_product_creation/static/src/xml/edit_product_popup.xml',
        ],
     },
     'application': True,

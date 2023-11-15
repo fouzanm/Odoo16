@@ -12,6 +12,9 @@ class ProductButton extends PosComponent {
     async onClickProducts() {
         var products = Object.values(this.env.pos.db.product_by_id)
         products.sort((a, b) => a.display_name.localeCompare(b.display_name))
+        for (const product of products) {
+            product.image = `/web/image?model=product.product&field=image_128&id=${product.id}&unique=${product.__last_update}`;
+        }
         const productList = await this.showTempScreen('ProductListScreen', {'products': products})
     }
 }

@@ -12,34 +12,16 @@
                     <div class="button back" t-on-click="back">
                         <t> Discard</t>
                     </div>
-<!--                    <div class="top-right-buttons">-->
-<!--                    <div t-if="state.detailIsShown &amp;&amp; state.editModeProps.partner.id" class="button more-info">-->
-<!--                        <a t-att-href="partnerLink" target="_blank"> More info</a>-->
-<!--                    </div>-->
-<!--                    <div class="search-bar-container sb-partner" t-if="!state.detailIsShown">-->
-<!--                        <div class="pos-search-bar">-->
-<!--                            <i class="fa fa-search" t-on-click="_onPressEnterKey"/>-->
-<!--                            <input t-ref="search-word-input-partner" placeholder="Search Customers..." size="1" t-on-keyup="updatePartnerList" />-->
-<!--                            <i class="fa fa-times" t-on-click="_clearSearch"/>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    </div>-->
                 </div>
                 <section class="full-content">
                     <div class="partner-window">
-<!--                        <section class="subwindow collapsed">-->
-<!--                            <div class="subwindow-container collapsed">-->
-<!--                                <div t-if="state.detailIsShown" class="partner-details-contents subwindow-container-fix">-->
-<!--                                    <PartnerDetailsEdit t-props="state.editModeProps" />-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </section>-->
                         <section class="subwindow list">
                             <div class="subwindow-container">
                                 <div class="subwindow-container-fix scrollable-y">
                                     <table class="partner-list">
                                         <thead>
                                             <tr>
+                                                <th></th>
                                                 <th>Name</th>
                                                 <th>Default Code</th>
                                                 <th>Category</th>
@@ -51,6 +33,7 @@
                                             <t t-foreach="this.props.products" t-as="product"
                                                t-key="product.id">
                                                 <tr>
+                                                    <td><img t-att-src="product.image" style="width: 50px;"/></td>
                                                     <td><t t-esc="product.display_name"/></td>
                                                     <t t-if="product.default_code">
                                                         <td><t t-esc="product.default_code"/></td>
@@ -60,14 +43,11 @@
                                                     </t>
                                                     <td><t t-esc="product.pos_categ_id[1]"/></td>
                                                     <td><t t-esc="product.lst_price"/></td>
-                                                    <td><button t-on-click="editProduct(product.id)"><i class="fa fa-pencil"></i></button></td>
+                                                    <td><button t-on-click="editProduct" t-attf-data-product-id="{{product.id}}"><i class="fa fa-pencil" t-attf-data-product-id="{{product.id}}"></i></button></td>
                                                 </tr>
                                             </t>
                                         </tbody>
                                     </table>
-                                    <!--&lt;!&ndash;                                    <div t-if="state.query" class="search-more-button">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <div class="button" t-on-click="_onPressEnterKey">Search more</div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
                                 </div>
                             </div>
                         </section>
@@ -76,5 +56,4 @@
             </div>
         </div>
     </t>
-
 </templates>
