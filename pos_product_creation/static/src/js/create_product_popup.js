@@ -13,21 +13,23 @@ class CreateProductPopup extends AbstractAwaitablePopup {
                     title: this.env._t('Validation Error'),
                     body: this.env._t('Product will not be created without a name.'),
                 });
+        } else {
+            this.rpc({
+                model: 'product.product',
+                method: 'create',
+                args: [{
+                    'name': document.getElementById('product').value,
+                    'lst_price': document.getElementById('price').value,
+                    'standard_price': document.getElementById('cost').value,
+                    'available_in_pos': true,
+                    'pos_categ_id': parseInt(document.getElementById('category').value),
+                    'image_1920': this.imageURL
+                }]
+            }).then(function (){
+                window.location.reload();
+            })
         }
-        this.rpc({
-            model: 'product.product',
-            method: 'create',
-            args: [{
-                'name': document.getElementById('product').value,
-                'lst_price': document.getElementById('price').value,
-                'standard_price': document.getElementById('cost').value,
-                'available_in_pos': true,
-                'pos_categ_id': parseInt(document.getElementById('category').value),
-                'image_1920': this.imageURL
-            }]
-        }).then(function (){
-            window.location.reload();
-        })
+
     }
     cancel() {
         this.env.posbus.trigger('close-popup', {
